@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>刘秦源 — 技术作品集</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --text: rgba(0,0,0,0.95);
+    --text-secondary: #615d59;
+    --text-muted: #a39e98;
+    --bg: #ffffff;
+    --bg-warm: #f6f5f4;
+    --blue: #0075de;
+    --blue-active: #005bab;
+    --blue-badge-bg: #f2f9ff;
+    --blue-badge-text: #097fe8;
+    --teal: #2a9d99;
+    --green: #1aae39;
+    --orange: #dd5b00;
+    --purple: #391c57;
+    --border: 1px solid rgba(0,0,0,0.1);
+    --shadow-card: rgba(0,0,0,0.04) 0px 4px 18px, rgba(0,0,0,0.027) 0px 2.025px 7.84688px, rgba(0,0,0,0.02) 0px 0.8px 2.925px, rgba(0,0,0,0.01) 0px 0.175px 1.04062px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+
+  /* Hero */
+  .hero {
+    padding: 80px 0 56px;
+    background: var(--bg);
+  }
+  .hero .inner {
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .hero .left { flex: 1; min-width: 300px; }
+  .hero h1 {
+    font-size: 48px; font-weight: 700; line-height: 1.04;
+    letter-spacing: -1.5px; color: var(--text);
+  }
+  .hero .title-line {
+    font-size: 20px; font-weight: 500; color: var(--text-secondary);
+    margin-top: 8px; line-height: 1.4;
+  }
+  .hero .contact {
+    font-size: 14px; color: var(--text-muted); margin-top: 16px;
+    line-height: 1.8;
+  }
+  .hero .right {
+    flex: 1; min-width: 280px;
+    background: var(--bg-warm);
+    border-radius: 12px; padding: 24px;
+    border: var(--border);
+  }
+  .hero .right h3 {
+    font-size: 14px; font-weight: 600; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;
+  }
+  .hero .right p {
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+  }
+
+  /* Metrics */
+  .badge-row {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;
+  }
+  .badge {
+    display: inline-block; background: var(--blue-badge-bg);
+    color: var(--blue-badge-text); font-size: 13px; font-weight: 600;
+    padding: 5px 12px; border-radius: 9999px; letter-spacing: 0.125px;
+  }
+  .badge.teal { background: #e8f7f6; color: #1e7a74; }
+  .badge.purple { background: #f3eeff; color: #6600cc; }
+  .badge.orange { background: #fff4ea; color: #cc5500; }
+  .badge.green { background: #e8fae8; color: #1a7a1a; }
+
+  /* Section */
+  .section { padding: 72px 0; }
+  .section.warm { background: var(--bg-warm); }
+  .section h2 {
+    font-size: 32px; font-weight: 700; line-height: 1.15;
+    letter-spacing: -0.75px; margin-bottom: 12px;
+  }
+  .section .section-desc {
+    font-size: 15px; color: var(--text-secondary); margin-bottom: 40px; max-width: 560px;
+  }
+
+  /* Skills Grid */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .skill-card {
+    background: var(--bg); border: var(--border); border-radius: 12px;
+    padding: 24px 20px; box-shadow: var(--shadow-card);
+  }
+  .skill-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .skill-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .skill-card .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+  .skill-card .tag {
+    font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 9999px;
+    background: rgba(0,0,0,0.05); color: var(--text-secondary);
+  }
+
+  /* Project Card */
+  .project {
+    background: var(--bg); border: var(--border); border-radius: 16px;
+    padding: 36px; margin-bottom: 28px; box-shadow: var(--shadow-card);
+  }
+  .project-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 8px; flex-wrap: wrap; gap: 8px;
+  }
+  .project-header h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.4px; }
+  .project-header .meta { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+  .project-stack {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+  }
+  .project-stack span {
+    font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 9999px;
+    background: var(--blue-badge-bg); color: var(--blue-badge-text);
+  }
+  .project .desc {
+    font-size: 15px; color: var(--text-secondary); line-height: 1.65; margin-bottom: 20px;
+  }
+  .project .outcome {
+    background: #f0fdf4; border-left: 3px solid var(--green);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 20px;
+    font-size: 14px; color: #166534; line-height: 1.6;
+  }
+  .hl-table {
+    width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 13px;
+  }
+  .hl-table th {
+    text-align: left; font-weight: 600; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 12px;
+    border-bottom: var(--border);
+  }
+  .hl-table td { padding: 10px 12px; border-bottom: var(--border); vertical-align: top; line-height: 1.5; }
+  .hl-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; font-size: 12px; }
+  .hl-table td:last-child { color: var(--text-secondary); font-size: 13px; }
+  .hl-table tr:last-child td { border-bottom: none; }
+
+  /* Core Comp */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  .comp-card {
+    padding: 28px 24px; border: var(--border); border-radius: 12px;
+    background: var(--bg);
+  }
+  .comp-card .num { font-size: 36px; font-weight: 700; color: var(--blue); line-height: 1; letter-spacing: -1px; margin-bottom: 8px; }
+  .comp-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+  .comp-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+  /* Experience Timeline */
+  .timeline { position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 8px; top: 4px; bottom: 4px;
+    width: 1px; background: rgba(0,0,0,0.12);
+  }
+  .tl-item { position: relative; margin-bottom: 28px; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -24px; top: 6px;
+    width: 9px; height: 9px; border-radius: 50%; background: var(--blue);
+  }
+  .tl-item .tl-date { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-bottom: 2px; }
+  .tl-item .tl-title { font-size: 15px; font-weight: 700; }
+  .tl-item .tl-company { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
+  .tl-item .tl-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+  /* Footer */
+  .footer {
+    padding: 56px 0 40px; text-align: center; color: var(--text-muted); font-size: 14px;
+  }
+  .footer .cta { font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 34px; letter-spacing: -0.75px; }
+    .project { padding: 24px; }
+    .project-header h3 { font-size: 20px; }
+    .section { padding: 48px 0; }
+    .section h2 { font-size: 26px; }
+    .container { padding: 0 20px; }
+    .hero .inner { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="inner">
+      <div class="left">
+        <h1>刘秦源</h1>
+        <p class="title-line">数据工程师<br>全栈数据人 — 从采集到决策的完整链路</p>
+        <p class="contact">
+          📍 青岛 &nbsp;·&nbsp; 9年经验<br>
+          📧 liuqyj510471@gmail.com &nbsp;·&nbsp; 📞 17354639527
+        </p>
+        <div class="badge-row">
+          <span class="badge">数据工程</span>
+          <span class="badge purple">Python开发</span>
+          <span class="badge orange">Web自动化</span>
+          <span class="badge green">NLP/分词</span>
+          <span class="badge" style="background:#fef3c7;color:#b45309;">Shell/ETL</span>
+        </div>
+      </div>
+      <div class="right">
+        <h3>🧭 我能做什么</h3>
+        <p>
+          从MongoDB/MySQL数仓建设、ETL管道开发、NLP分词分析，到量化策略研发和Web反爬自动化。<br><br>
+          不只写代码——把复杂业务问题转化为可持续运行的自动化数据系统。代码量18,000+行（Python + Shell + SQL），9个独立交付项目。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Work Experience -->
+<section class="section warm">
+  <div class="container">
+    <h2>工作经历</h2>
+    <p class="section-desc">6年电商数据分析 + 3年IT运维，从数据分析师到全栈数据工程</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-date">2025.10 – 至今</div>
+        <div class="tl-title">数据分析师</div>
+        <div class="tl-company">青岛麦巨商贸有限公司</div>
+        <div class="tl-desc">
+          搭建电商38店自动化采集系统（Playwright反爬）· 设计MongoDB→MySQL生产级同步管道 · 开发商品标题分词分析系统 · 独立开发ETF量化交易策略 · 维护10,000+行儒艮ETL调度Shell脚本 · 开发Nike Moss全球市场价格采集Pipeline
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2022.07 – 2025.07</div>
+        <div class="tl-title">IT技术支持</div>
+        <div class="tl-company">青岛海信大地商贸有限公司</div>
+        <div class="tl-desc">
+          设计MySQL数仓整合多源数据 · 开发BI看板30+（帆软/神策）· 构建电商运营系统和海淘采购模型 · API集成DeepSeek/Midjourney · 发现并处理80万金额遗留问题
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-date">2017.08 – 2022.04</div>
+        <div class="tl-title">数据分析师 / 机器人教师</div>
+        <div class="tl-company">首展网络科技 · 加拿大ROBOEDU</div>
+        <div class="tl-desc">
+          多渠道投放数据分析，Python/机器视觉/神经网络教学，FLL/WRO/蓝桥杯等赛事带队
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Skills -->
+<section class="section">
+  <div class="container">
+    <h2>技术能力矩阵</h2>
+    <p class="section-desc">后台代码驱动，前端BI可视——从底层管道到上层决策全覆盖</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3>🐍 Python 工程</h3>
+        <p>多进程/多线程、SQLAlchemy/PyMongo、dataclass工厂模式、日志轮转监控</p>
+        <div class="tags"><span class="tag">Multiprocessing</span><span class="tag">Threading</span><span class="tag">SQLAlchemy</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>🗄️ 数据库 & 数仓</h3>
+        <p>MySQL分区/存储过程/CTE/JSON聚合 · MongoDB副本集/增量同步 · PDI/ETL管道</p>
+        <div class="tags"><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">PDI</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>📊 数据处理 & NLP</h3>
+        <p>Pandas/NumPy · jieba分词/自定义词典 · LOAD DATA INFILE高性能写入 · 转化率/lift归因</p>
+        <div class="tags"><span class="tag">Pandas</span><span class="tag">jieba</span><span class="tag">NumPy</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>📊 时序分析与建模</h3>
+        <p>自适应控制算法(PID)、概率优化、趋势检测、波动率建模、多源宏观经济数据融合</p>
+        <div class="tags"><span class="tag">PID控制</span><span class="tag">时序分析</span><span class="tag">数据建模</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>🤖 Web自动化 & 反爬</h3>
+        <p>Playwright/Shadow DOM穿透/Canvas指纹对抗/CDP检测规避/多账号Session隔离</p>
+        <div class="tags"><span class="tag">Playwright</span><span class="tag">反检测</span><span class="tag">指纹对抗</span></div>
+      </div>
+      <div class="skill-card">
+        <h3>⚙️ 工程 & Shell/运维</h3>
+        <p>Shell/Bash脚本（10,000+行ETL调度）· 死锁处理/动态调参/熔断降级 · 需求调研→分段交付</p>
+        <div class="tags"><span class="tag">Shell/Bash</span><span class="tag">Linux</span><span class="tag">ETL调度</span><span class="tag">项目管理</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="section warm">
+  <div class="container">
+    <h2>核心项目</h2>
+    <p class="section-desc">6个可交付的生产级项目，含代码、SQL、约束文档</p>
+
+    <!-- Project 1: Financial Time Series -->
+    <div class="project">
+      <div class="project-header">
+        <h3>金融时序数据建模与分析</h3>
+        <span class="meta">个人项目 · 1,102行 Python</span>
+      </div>
+      <div class="project-stack">
+        <span>Python</span><span>Pandas</span><span>NumPy</span><span>PID控制</span><span>时序分析</span><span>Multiprocessing</span>
+      </div>
+      <p class="desc">基于自适应控制算法（PID控制器）的金融时序数据建模系统。融合概率优化、趋势检测、波动率建模和多源宏观经济数据（从美联储/BLS官网实时抓取经济日历数据），通过16进程并行参数搜索和滚动窗口交叉验证防止过拟合。</p>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>自适应控制引擎</td><td>PID（比例-积分-微分）控制器 + 误差积分累积 + 自适应限幅，参数通过滚动窗口优化</td></tr>
+        <tr><td>多因子信号</td><td>概率优化模型、趋势突破检测、波动率自适应冷却、宏观经济数据多源融合</td></tr>
+        <tr><td>事件感知</td><td>从federalreserve.gov和bls.gov实时解析经济事件日历，事件窗口自动调整模型参数</td></tr>
+        <tr><td>工程标准</td><td>dataclass冻结配置、类型注解、参数缓存版本管理、过拟合比率检测</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 2: NLP -->
+    <div class="project">
+      <div class="project-header">
+        <h3>电商标题分词与分析系统</h3>
+        <span class="meta">独立开发 · 666行 Python + 200行 SQL</span>
+      </div>
+      <div class="project-stack">
+        <span>Python</span><span>jieba</span><span>MongoDB</span><span>MySQL</span><span>SQL</span><span>Multiprocessing</span>
+      </div>
+      <p class="desc">覆盖220+店铺的全店商品标题自动分词Pipeline：MongoDB读取→ProcessPoolExecutor多进程jieba分词（自定义电商词典+正则货号抽取）→LOAD DATA LOCAL INFILE高性能写入MySQL分区表→SQL层三级转化率计算（商品→店铺→大盘→lift指数）→30日趋势曲线JSON存储。</p>
+      <div class="outcome"><strong>📊 业务成果：</strong>千万级分词记录存储检索，实现以"转化效能"为核心的标题精细化治理。通过词汇评价体系自动剔除高流量低转化词，结合大模型语义重组生成优化标题。</div>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>性能优化</td><td>LOAD DATA LOCAL INFILE替代逐行INSERT；按唯一索引预排序减少B+树页分裂；动态batch(1000→10000)</td></tr>
+        <tr><td>死锁容错</td><td>MySQL 1213死锁自动检测 → 随机抖动1-3秒 → 最多5次重试</td></tr>
+        <tr><td>分词质量</td><td>自定义电商词典 + 中英文混合标题智能切分 + 正则货号提取 + 停用词过滤</td></tr>
+        <tr><td>分区管理</td><td>存储过程自动预建未来7天分区 + 自动清理40天前历史分区</td></tr>
+        <tr><td>SQL分析层</td><td>游标逐日计算转化率lift → 分词提升排名表 → 30日趋势JSON（指标曲线可前端直接渲染）</td></tr>
+        <tr><td>监控</td><td>独立监控线程实时输出进度%、处理速度(docs/s)、ETA剩余时间、队列堆积量</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 3: ETL -->
+    <div class="project">
+      <div class="project-header">
+        <h3>MongoDB → MySQL 增量同步服务</h3>
+        <span class="meta">独立开发 · 636行 Python</span>
+      </div>
+      <div class="project-stack">
+        <span>Python</span><span>PyMongo</span><span>SQLAlchemy</span><span>PyMySQL</span><span>Threading</span>
+      </div>
+      <p class="desc">"视觉下图"业务日志 MongoDB集群→MySQL 生产级增量同步服务。核心特色：动态Schema实时适配——MongoDB文档字段不固定时，自动检测新字段→ALTER TABLE加列→触发历史数据回填，无需人工维护表结构。</p>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>动态Schema</td><td>SharedSchemaManager检测新字段→实时ALTER TABLE→触发Backfill回填历史NULL值</td></tr>
+        <tr><td>断点续传</td><td>基于MySQL最大_id（MongoDB ObjectId）定位同步位点，重启增量续传</td></tr>
+        <tr><td>多线程写入</td><td>5个Writer daemon线程 + 共享队列(20000) + 批量5000条ON DUPLICATE KEY UPDATE</td></tr>
+        <tr><td>三级容错</td><td>批量insert → 失败重新反射表结构重试 → 逐行insert兜底，数据零丢失</td></tr>
+        <tr><td>运维监控</td><td>RotatingFileLogger(100MB滚动) + 全局TPS实时追踪 + 线程30分钟心跳检测</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 4: Automation -->
+    <div class="project">
+      <div class="project-header">
+        <h3>电商平台多店铺自动化采集系统</h3>
+        <span class="meta">38店 · Playwright · 647行约束文档</span>
+      </div>
+      <div class="project-stack">
+        <span>Playwright</span><span>Python</span><span>反检测</span><span>Shadow DOM</span><span>Excel</span>
+      </div>
+      <p class="desc">京东+抖音商家后台每日自动登录38个店铺，抓取账户余额和保证金汇总到Excel。核心难点是对抗平台反爬和多店铺Session隔离。输出了一套647行工程化约束知识库——不是散乱笔记，而是三级约束分级(P0/P1/P2)、失效检测、探索模式自动切换、完整"不可行方案"清单。</p>
+      <div class="outcome"><strong>📊 业务成果：</strong>每天仅需人工登录~10分钟（验证码），后续38店全自动采集。从人工逐个登录（1-2小时）降至半自动化10分钟。</div>
+      <table class="hl-table">
+        <tr><th>难点攻克</th><th>解决方案</th></tr>
+        <tr><td>SPA模块同名陷阱</td><td>京东多个"财务"模块路径相似数据不同 → URL+页面内容双重验证，防取错数据</td></tr>
+        <tr><td>Shadow DOM弹窗</td><td>抖店2026年促销弹窗大量Shadow DOM封装 → element.shadowRoot递归穿透关闭</td></tr>
+        <tr><td>Canvas指纹关联</td><td>多账号同Context共享指纹 → 每3-5账号重建浏览器进程，防关联封号</td></tr>
+        <tr><td>Session粘滞循环</td><td>切换店铺后验证店铺ID变更再导航 → 防止login→callback→index→login死循环</td></tr>
+        <tr><td>数据投毒防御</td><td>首页模糊金额 vs 子页精确金额对账，偏差>5%标记异常并备注</td></tr>
+        <tr><td>约束工程化</td><td>三级约束分级/30天失效检测/探索模式触发/不可行方案清单——可演进系统</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 5: Profit Model -->
+    <div class="project">
+      <div class="project-header">
+        <h3>电商运营决策利润模型</h3>
+        <span class="meta">2025.11 – 至今 · Python + MySQL + ERP</span>
+      </div>
+      <div class="project-stack">
+        <span>Python</span><span>MySQL</span><span>爬虫</span><span>API集成</span><span>ERP</span>
+      </div>
+      <p class="desc">针对多平台、多渠道供应的复杂业务场景，构建从数据集成到决策支持的统一利润模型。核心实现：Python爬虫+API将ERP核心数据与第三方多平台数据进行异构集成→标准化数仓→订单级对账算法（自动识别重复扣款、供应商异常计费、新增订单费用偏差）→店铺/平台评价体系（流量/转化二级指标下钻+异常自动诊断）→运营动作埋点归因（量化改名/调价对流量转化的长效影响）。</p>
+      <div class="outcome"><strong>📊 业务成果：</strong>实现运营指标实时追踪与财务风险早期预警。订单级对账自动识别费用异常并推送负责人，运营动作归因驱动数据导向的精细化运营。</div>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>多源集成</td><td>Python爬虫+API将ERP与第三方平台数据异构集成，建立标准化数仓</td></tr>
+        <tr><td>财务风控</td><td>订单级对账算法：自动识别重复扣款、供应商异常计费、新增订单费用偏差</td></tr>
+        <tr><td>运营诊断</td><td>店铺/平台评价体系，二级指标下钻分析波动原因，关联SOP知识库自动推荐对策</td></tr>
+        <tr><td>归因分析</td><td>运营动作埋点打标，量化改名/调价等操作对后续流量与转化的长效影响</td></tr>
+        <tr><td>企业建模</td><td>整合人事与财务数据，构建费用分摊模型与人效评估体系</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 6: After-sales -->
+    <div class="project">
+      <div class="project-header">
+        <h3>电器售后系统</h3>
+        <span class="meta">项目负责人 · 2024.10 – 2025.06</span>
+      </div>
+      <div class="project-stack">
+        <span>项目管理</span><span>ERP改造</span><span>API联调</span><span>需求调研</span>
+      </div>
+      <p class="desc">整合规范山东省区售后体系，提升服务响应效率和用户体验。全流程负责：访谈销售/售后/财务/品牌运营4部门→梳理10项核心需求→输出需求文档（小程序+ERP改造方案）→评估5家供应商选定合作伙伴→制定分段交付计划→改造ERP表单和字段→联调测试5个API接口→内部测试100+条反馈→编制操作手册并组织培训。</p>
+      <div class="outcome"><strong>📊 业务成果：</strong>工单处理时长48h→24h（缩短50%）；配件结算周期季度→月度，减少经济纠纷；规范经销商行为从不修不报到有售就报，提升数据有效性；获取有效用户/产品/设计师数据支撑后期运营。</div>
+    </div>
+
+    <!-- Project 7: Bank Statement -->
+    <div class="project">
+      <div class="project-header">
+        <h3>银行流水智能排序系统</h3>
+        <span class="meta">独立开发 · 487行 Python</span>
+      </div>
+      <div class="project-stack">
+        <span>Python</span><span>Pandas</span><span>NumPy</span><span>算法设计</span>
+      </div>
+      <p class="desc">银行流水记录通常按时间戳排列但实际交易顺序可能被打乱。该算法通过余额链式法则（当前余额 - 交易金额 = 上一笔余额）自动重建正确的交易顺序。核心是一个三阶段的图链重构算法。</p>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>第一轮：精确匹配</td><td>构建余额哈希索引（O(1)查找），从最新记录逐条向前追溯，形成排序链</td></tr>
+        <tr><td>第二轮：异常修复</td><td>链中断点自动检测，多策略匹配：±0.5元范围扫描 → 百分比匹配（10%以内）→ 放宽匹配，修复后继续延伸链</td></tr>
+        <tr><td>第三轮：孤立插入</td><td>无法匹配的孤立记录尝试插入现有链的间隙中，计算前后匹配度评分，最优位置插入并重排后续编号</td></tr>
+        <tr><td>结果验证</td><td>链内逐条验证余额等式，输出异常统计 + 链分析报告（起始/结束时间、交易总额）</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 8: Rugen ETL -->
+    <div class="project">
+      <div class="project-header">
+        <h3>儒艮ETL自动化调度系统</h3>
+        <span class="meta">核心开发 · 10,085行 Shell</span>
+      </div>
+      <div class="project-stack">
+        <span>Shell/Bash</span><span>MySQL</span><span>MongoDB</span><span>ETL</span><span>聚石塔</span><span>Linux</span>
+      </div>
+      <p class="desc">日产级ETL自动化调度脚本，驱动"儒艮"数据中台的每日全量同步。涵盖阿里云RDS（聚石塔）→本地MySQL的销售订单同步、MongoDB操作日志导入、支付宝同业账单的复杂清洗匹配。</p>
+      <div class="outcome"><strong>📊 系统规模：</strong>每日自动执行的多平台数据同步Pipeline，含销售订单ETL、同业支付宝账单清洗（多轮order number匹配算法）、MongoDB→MySQL操作日志导入，带完整日志追踪和异常告警。</div>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>销售订单同步</td><td>聚石塔RDS→本地MySQL LOAD DATA LOCAL INFILE，含订单状态修正、NULL值规范化</td></tr>
+        <tr><td>支付宝账单清洗</td><td>多轮商户订单号匹配：RD/RM汇款单号配对→T200P订单号提取→下划线截断→保险理赔订单号提取等10+条UPDATE规则</td></tr>
+        <tr><td>MongoDB导入</td><td>mongoexport → sed清洗 → LOAD DATA LOCAL INFILE，含下单日志和订单日志两张核心表</td></tr>
+        <tr><td>数据热备份</td><td>每次运行前CREATE TABLE ... AS SELECT创建带时间戳的结果表备份，保证可回滚</td></tr>
+        <tr><td>日志体系</td><td>双通道日志（成功/错误分离），每步标注时间戳、执行状态、影响行数，便于故障定位</td></tr>
+      </table>
+    </div>
+
+    <!-- Project 9: Nike Moss -->
+    <div class="project">
+      <div class="project-header">
+        <h3>Nike Moss 全球市场价格采集系统</h3>
+        <span class="meta">核心开发 · 3,612行 Shell + SQL</span>
+      </div>
+      <div class="project-stack">
+        <span>Shell/Bash</span><span>MySQL</span><span>MongoDB</span><span>跨境数据</span><span>SQL窗口函数</span>
+      </div>
+      <p class="desc">Nike/Jordan球鞋全球二级市场价格采集与标准化Pipeline。从三个海外平台（FlightClub/GOAT/StockX）每日抓取在售数据，经14种货币→人民币统一折算、货号标准化、尺码转换（US→EUR）、产品属性（品牌/性别/品类/季节/吊牌价）补全，输出SKU和货号两级价格聚合表。</p>
+      <div class="outcome"><strong>📊 系统规模：</strong>跨3个海外数据源 + 14种货币转换 + 多层数据清洗（01→02→03三阶段），日产出SKU/货号两级人民币价格表，支持历史快照留存和趋势分析。</div>
+      <table class="hl-table">
+        <tr><th>模块</th><th>实现</th></tr>
+        <tr><td>产品主数据</td><td>SQL窗口函数(ROW_NUMBER OVER PARTITION)聚合品牌/性别/品类/季节/吊牌价，多表LEFT JOIN输出product_trans</td></tr>
+        <tr><td>数据源采集</td><td>FlightClub/GOAT/StockX三大平台MongoDB日志→mongoexport CSV→mysqlimport LOAD DATA入库</td></tr>
+        <tr><td>货号标准化</td><td>从"品牌 货号-后缀"格式提取标准货号（LEFT+SUBSTRING_INDEX组合），空格的→"-"替换</td></tr>
+        <tr><td>货币统一</td><td>14种货币实时汇率转换：EUR 8.14/USD 6.97/GBP 9.34/JPY 0.044/AUD 4.88... → 统一人民币</td></tr>
+        <tr><td>尺码标准化</td><td>US尺码→EUR尺码：优先samp_size_conversion表匹配 → 兜底尺码对照表_麦乐表补全</td></tr>
+        <tr><td>三阶段清洗</td><td>清洗01(货号+汇率)→清洗02(JOIN产品属性)→清洗03(JOIN尺码转换)→结果表(SKU+货号两级聚合)</td></tr>
+        <tr><td>历史快照</td><td>每日CREATE TABLE ... AS SELECT保存当日数据副本，支持回溯和历史趋势分析</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Core Competencies -->
+<section class="section">
+  <div class="container">
+    <h2>为什么选我</h2>
+    <p class="section-desc">不只是写代码的人，而是能把业务问题翻译成技术方案的人</p>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="num">01</div>
+        <h4>全栈数据闭环</h4>
+        <p>从MongoDB采集→ETL清洗→MySQL入库→SQL分析→量化决策，一个人打通整条数据链路。不需要多个角色交接，降低沟通成本和错误率。</p>
+      </div>
+      <div class="comp-card">
+        <div class="num">02</div>
+        <h4>性能工程意识</h4>
+        <p>不只"能跑就行"——LOAD DATA INFILE替代逐行INSERT、预排序减少B+树页分裂、动态batch自适应、死锁重试机制。每个环节都有针对性的性能优化。</p>
+      </div>
+      <div class="comp-card">
+        <div class="num">03</div>
+        <h4>工程化思维</h4>
+        <p>约束分级(P0/P1/P2)、失败降级(批量→重试→逐行)、断点续传、监控告警、幂等设计。把一次性脚本变成可持续运行的生产级系统。这是从"写代码"到"做工程"的跨越。</p>
+      </div>
+      <div class="comp-card">
+        <div class="num">04</div>
+        <h4>业务翻译能力</h4>
+        <p>6年电商数据经验，懂运营逻辑（转化率/lift/分词营销）、懂财务（订单对账/费用分摊）、懂金融市场（宏观事件/量化策略）。能直接和业务部门对话，把模糊需求翻译成精确的技术方案。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <p class="cta">📋 详细代码和约束文档可按需提供</p>
+    <p style="margin-top:6px;">liuqyj510471@gmail.com · 青岛</p>
+    <p style="margin-top:12px; font-size:12px;">Python · Shell/Bash · MySQL · MongoDB · Pandas · jieba · Playwright · AkShare · PDI · 帆软 · 神策</p>
+  </div>
+</footer>
+
+</body>
+</html>
